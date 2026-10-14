@@ -1,5 +1,7 @@
 # Docneo
 
+Phase 4 adds secure Google Drive authorization and personalized organization. Its database migration is installed; see [docs/phase4-google-drive.md](docs/phase4-google-drive.md) for architecture, security boundaries, required configuration, limitations, and the post-deployment validation checklist.
+
 **Scan. Organize. Done.**
 
 Docneo is a bilingual, AI-assisted document organization SaaS for Germany and France. The product is designed to analyze a document, propose metadata and a destination, and save it to the user's existing Google Drive only after explicit confirmation.

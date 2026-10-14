@@ -2,7 +2,7 @@
 
 ## Status
 
-Phases 1 and 2 establish the system boundaries and public experience. Phase 3 adds Supabase Auth, SSR cookie sessions, owner-scoped profiles, and a protected bilingual account area. Document, Google Drive, AI, and billing integrations remain inactive.
+Phases 1 and 2 establish the public experience. Phase 3 adds Supabase Auth and the protected bilingual account area. Phase 4 adds separate least-privilege Drive authorization, encrypted server-side tokens, a strict selected-root boundary, personalized onboarding, and pending-document preparation; its database migration is installed. Document analysis, uploads, AI, and billing remain inactive.
 
 ## System shape
 
@@ -42,7 +42,7 @@ The browser never receives provider secrets, service-role credentials, or refres
 
 ## Google Drive permission model
 
-The preferred OAuth scope is `drive.file`. It does not permit arbitrary browsing of an existing Drive. Folder authorization must therefore use Google Picker or app-created/explicitly selected resources. Broader scopes require a documented product decision, Google verification implications, and explicit user consent before implementation.
+The only requested Drive scope is `drive.file`. It does not permit arbitrary browsing. Folder authorization uses an app-created folder or an explicitly Picker-selected resource; every write derives the stored owner-bound root on the server. See `docs/phase4-google-drive.md` for the redirect-Picker compatibility limitation that must be validated before production.
 
 ## Processing state machine
 

@@ -1,5 +1,9 @@
 # Security architecture
 
+## Phase 4 Drive controls
+
+Google Drive authorization is separate from Supabase Google Sign-In and requests only `drive.file`. OAuth state uses a short-lived HttpOnly cookie and constant-time verification. Provider tokens are encrypted independently with AES-256-GCM and are reachable only from server-only code using owner-derived queries. Folder mutations derive the selected root from the database, validate the root with Google, require explicit confirmation, and record an idempotent operation. Browser roles cannot read or mutate Drive integration tables. See `docs/phase4-google-drive.md` for the complete model and the Picker compatibility validation required before production.
+
 ## Trust boundaries
 
 Browser input, uploaded files, extracted text, AI responses, OAuth responses, webhooks, and provider error bodies are untrusted. Each boundary requires parsing, size limits, schema validation, and safe errors.

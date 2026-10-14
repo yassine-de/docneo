@@ -1,6 +1,6 @@
 # Database design
 
-The baseline schema is defined in `supabase/migrations/202610140001_initial_schema.sql`. Phase 3 adds authenticated profiles through `supabase/migrations/202610140002_phase3_auth_profiles.sql`. Migrations are committed for review and are not applied to a remote project automatically.
+The baseline schema is defined in `202610140001_initial_schema.sql`; Phase 3 adds authenticated profiles in `202610140002_phase3_auth_profiles.sql`. The additive, not-yet-applied Phase 4 model is in `202610140003_phase4_drive_organization.sql`. Migrations are committed for review and are never applied remotely automatically.
 
 ## Ownership model
 
@@ -20,6 +20,11 @@ Every tenant-owned row contains `user_id`. Composite foreign keys include that `
 | `audit_events` | Security and consent evidence | redacted contextual metadata |
 | `subscription_plans` | Future catalog definition | none |
 | `subscriptions` | Future billing state | provider customer/subscription IDs |
+| `organization_preferences` | Minimal confirmed onboarding answers | optional labels and selections |
+| `onboarding_sessions` | Resumable questionnaire state | draft answers |
+| `folder_structure_drafts` | Proposed/confirmed folder tree | folder names and internal relationships |
+| `drive_operations` | Consent and idempotent Drive-operation ledger | opaque provider folder IDs and safe error codes |
+| `document_actions` | Future pending/completed/archived workflow | action text and confirmed dates |
 
 The Phase 3 policy allows authenticated users to select only their own profile and update only `display_name` and `locale`. Profile creation and email synchronization are owned by database triggers; browser clients cannot insert or delete profiles or change ownership and email columns.
 
