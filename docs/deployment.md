@@ -1,6 +1,6 @@
 # Netlify deployment plan
 
-No deployment has been created in Phases 1–2.
+No deployment has been created in Phases 1–2. Deployment compatibility was rechecked against the official Netlify documentation on 2026-10-14.
 
 ## Intended flow
 
@@ -19,7 +19,15 @@ Build: npm run build
 Framework: Next.js (Netlify-supported adapter/runtime)
 ```
 
-Before first deployment, verify the exact Next.js version against Netlify's current support matrix and pin compatible versions. Do not add Vercel services or configuration.
+The project currently uses Next.js 16.4 with App Router, Cache Components, Turbopack, localized routes, and a request proxy. Netlify documents full support for these capabilities through its automatically applied OpenNext adapter and tests the adapter against stable Next.js releases. The adapter is intentionally not installed or pinned in this repository.
+
+Configuration lives in `netlify.toml`; Node.js 22 is pinned through `.nvmrc`, `package.json`, and the Netlify build environment. Netlify's documented hybrid Next.js defaults are `next build` and `.next`, matching this project.
+
+Official references:
+
+- https://docs.netlify.com/build/frameworks/framework-setup-guides/nextjs/overview/
+- https://docs.netlify.com/snippets/frameworks/nextjs-config-values/
+- https://docs.netlify.com/build/configure-builds/manage-dependencies/
 
 ## Runtime boundaries
 
@@ -39,3 +47,12 @@ Landing pages should remain statically rendered. Authentication and lightweight 
 ## Manual setup still required
 
 GitHub repository creation, Netlify site connection, domains/DNS, all third-party projects, legal content, provider agreements, and production secrets require explicit authorization and are intentionally absent.
+
+## First connection checklist
+
+1. Confirm the GitHub repository is private and select `main` as the production branch.
+2. Connect the repository in Netlify; accept framework detection for Next.js.
+3. Confirm `npm run build` and `.next` from the committed configuration.
+4. Add `NEXT_PUBLIC_SITE_URL` using Netlify's environment-variable UI for each deploy context.
+5. Keep all future sensitive variables in Netlify's secret store, never in `netlify.toml`.
+6. Trigger a Deploy Preview first and run smoke checks before authorizing a production deployment.

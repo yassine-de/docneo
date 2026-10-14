@@ -29,6 +29,14 @@ npm run dev
 
 Open `http://localhost:3000`. The root route redirects to French when the browser's preferred language begins with `fr`; otherwise it uses German.
 
+### Cross-platform setup
+
+On macOS or Linux, create the local environment file with:
+
+```bash
+cp .env.example .env.local
+```
+
 ## Quality commands
 
 ```bash
@@ -39,6 +47,22 @@ npm run build
 ```
 
 Run the complete gate with `npm run check`.
+
+## GitHub and Netlify preparation
+
+The intended private GitHub repository is `https://github.com/yassine-de/docneo.git`. The local `main` branch may be connected to that remote, but no push or GitHub repository mutation is performed automatically.
+
+Netlify configuration is committed in `netlify.toml`:
+
+- Node.js 22 (also declared in `.nvmrc` and `package.json`)
+- Build command: `npm run build`
+- Publish directory: `.next`
+- Production branch: configure as `main` in Netlify
+- Deploy previews: enabled by Netlify when the repository is connected and pull requests are opened
+
+Netlify automatically applies its OpenNext adapter to supported modern Next.js applications. Do not install or pin `@netlify/plugin-nextjs`; allowing Netlify to select the current adapter preserves compatibility updates.
+
+Before the first deployment, set `NEXT_PUBLIC_SITE_URL` separately for Production and Deploy Preview contexts in Netlify. If it is omitted, metadata safely falls back to Netlify's read-only `DEPLOY_PRIME_URL` or `URL`. Future server-side secrets must be entered through Netlify environment-variable management and never added to `netlify.toml`.
 
 ## Environment variables
 
