@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { defaultLocale, locales } from "@/i18n/config";
+import { refreshSupabaseSession } from "@/lib/supabase/proxy";
 
 function preferredLocale(request: NextRequest) {
   const languages = request.headers.get("accept-language")?.toLowerCase() ?? "";
@@ -8,10 +9,10 @@ function preferredLocale(request: NextRequest) {
     : defaultLocale;
 }
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const hasLocale = locales.some((locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`));
-  if (hasLocale) return NextResponse.next();
+  if (hasLocale) return refreshSupabaseSession(request);
 
   const url = request.nextUrl.clone();
   url.pathname = `/${preferredLocale(request)}${pathname === "/" ? "" : pathname}`;
@@ -19,5 +20,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml).*)"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|manifest.webmanifest).*)"],
 };

@@ -6,7 +6,7 @@ Browser input, uploaded files, extracted text, AI responses, OAuth responses, we
 
 ## Core controls
 
-- Supabase Auth sessions use secure, HTTP-only cookie handling on the server.
+- Supabase Auth sessions use secure cookie handling through the official SSR adapter; the request proxy refreshes sessions while protected layouts revalidate identity server-side.
 - Every mutation authenticates and authorizes the resource owner server-side.
 - PostgreSQL Row Level Security provides defense in depth against cross-user access.
 - Service-role, OAuth, encryption, OpenAI, and future Stripe secrets are server-only environment variables.
@@ -15,6 +15,19 @@ Browser input, uploaded files, extracted text, AI responses, OAuth responses, we
 - Security headers disable framing, MIME sniffing, and unnecessary browser permissions. CSP will be finalized once provider scripts and preview requirements are known.
 - State-changing browser requests use same-site cookies, origin checks, and CSRF tokens where cookie-based Route Handlers require them.
 - Per-user and per-IP rate limits protect auth, uploads, AI jobs, and Drive writes.
+
+## Authentication controls (Phase 3)
+
+- Login errors are generic and recovery responses do not reveal whether an account exists.
+- Confirmation and recovery tokens are exchanged only by the server callback and callback responses are private/no-store.
+- Redirect targets are allowlisted to localized in-app routes to prevent open redirects.
+- Password input is length-bounded and requires at least ten characters, upper- and lowercase letters, and a number.
+- Authenticated pages verify the user on the server; the proxy is not treated as the authorization boundary.
+- Profile RLS restricts reads to the owner and client updates to display name and locale only.
+- Future Drive, processing, organization, subscription, and audit tables have no client-role privileges until their implementation phases explicitly enable them.
+- Composite ownership foreign keys reject cross-user references even when a foreign UUID becomes known.
+- Auth trigger functions use an empty search path and explicitly deny direct execution by public, anonymous, and authenticated roles.
+- Next.js Server Actions enforce same-origin request checks for form mutations. Production must also add a distributed rate limiter for signup, login, and recovery; per-process memory is not a reliable control on Netlify.
 
 ## Upload controls (Phase 5)
 

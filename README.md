@@ -4,7 +4,7 @@
 
 Docneo is a bilingual, AI-assisted document organization SaaS for Germany and France. The product is designed to analyze a document, propose metadata and a destination, and save it to the user's existing Google Drive only after explicit confirmation.
 
-This repository currently contains **Phase 1 (architecture and setup)** and **Phase 2 (premium bilingual landing page)**. Authentication, Google Drive, document upload, AI processing, billing, and production deployment are deliberately not connected yet.
+This repository contains **Phase 1 (architecture)**, **Phase 2 (premium bilingual landing page)**, and **Phase 3 (authentication and account dashboard)**. Google Drive, document upload, AI processing, billing, and production deployment are deliberately not connected yet.
 
 ## What is implemented
 
@@ -16,6 +16,10 @@ This repository currently contains **Phase 1 (architecture and setup)** and **Ph
 - PostgreSQL/Supabase baseline schema with tenant-scoped RLS policies
 - Architecture, security, database, deployment, and roadmap documentation
 - Automated localization/content contract tests
+- Supabase email/password authentication with SSR cookie sessions
+- Localized signup, email confirmation, login, recovery, and password reset flows
+- Server-protected dashboard, documents, and settings routes
+- Owner-scoped profile records with Row Level Security
 
 ## Local development
 
@@ -28,6 +32,8 @@ npm run dev
 ```
 
 Open `http://localhost:3000`. The root route redirects to French when the browser's preferred language begins with `fr`; otherwise it uses German.
+
+Authentication also needs a Supabase project URL and publishable key in `.env.local`. Follow [the Supabase setup guide](docs/supabase-setup.md), then restart the development server.
 
 ### Cross-platform setup
 
@@ -66,7 +72,7 @@ Before the first deployment, set `NEXT_PUBLIC_SITE_URL` separately for Productio
 
 ## Environment variables
 
-Only `NEXT_PUBLIC_SITE_URL` is used in the current phase. The remaining entries in `.env.example` document future server-side integrations and must stay unset until those phases begin. Never commit `.env.local` or real credentials.
+`NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_SUPABASE_URL`, and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` are used in Phase 3. The publishable key is intended for browser use; database passwords and service-role keys are not required by this application and must never be committed. Future integration entries must stay unset until their phases begin.
 
 ## Documentation
 
@@ -75,7 +81,8 @@ Only `NEXT_PUBLIC_SITE_URL` is used in the current phase. The remaining entries 
 - [Security](docs/security.md)
 - [Deployment](docs/deployment.md)
 - [Roadmap](docs/roadmap.md)
+- [Supabase setup](docs/supabase-setup.md)
 
 ## Current limitations
 
-All document and Google Drive activity shown on the landing page is simulated. No document is uploaded, analyzed, persisted, or sent to a third party. Prices are provisional and payments are disabled.
+All document and Google Drive activity shown on the landing page and dashboard is simulated. Authentication and profile storage are the only live-capable integrations. No document is uploaded, analyzed, persisted, or sent to a third party. Prices are provisional and payments are disabled.

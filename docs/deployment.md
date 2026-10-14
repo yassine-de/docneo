@@ -1,6 +1,6 @@
 # Netlify deployment plan
 
-No deployment has been created in Phases 1–2. Deployment compatibility was rechecked against the official Netlify documentation on 2026-10-14.
+No deployment has been created in Phases 1–3. Deployment compatibility was rechecked against the official Netlify documentation on 2026-10-14.
 
 ## Intended flow
 
@@ -53,6 +53,6 @@ GitHub repository creation, Netlify site connection, domains/DNS, all third-part
 1. Confirm the GitHub repository is private and select `main` as the production branch.
 2. Connect the repository in Netlify; accept framework detection for Next.js.
 3. Confirm `npm run build` and `.next` from the committed configuration.
-4. Add `NEXT_PUBLIC_SITE_URL` using Netlify's environment-variable UI for each deploy context.
+4. Add `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_SUPABASE_URL`, and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` using Netlify's environment-variable UI for each deploy context.
 5. Keep all future sensitive variables in Netlify's secret store, never in `netlify.toml`.
 6. Trigger a Deploy Preview first and run smoke checks before authorizing a production deployment.

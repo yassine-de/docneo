@@ -34,6 +34,7 @@ create table public.connected_accounts (
   last_error_code text,
   created_at timestamptz not null default timezone('utc', now()),
   updated_at timestamptz not null default timezone('utc', now()),
+  unique (id, user_id),
   unique (user_id, provider),
   unique (provider, provider_subject)
 );
@@ -47,6 +48,7 @@ create table public.organizational_entities (
   identifiers jsonb not null default '{}'::jsonb check (jsonb_typeof(identifiers) = 'object'),
   created_at timestamptz not null default timezone('utc', now()),
   updated_at timestamptz not null default timezone('utc', now()),
+  unique (id, user_id),
   unique (user_id, entity_type, name)
 );
 
@@ -62,6 +64,11 @@ create table public.destination_folders (
   is_active boolean not null default true,
   created_at timestamptz not null default timezone('utc', now()),
   updated_at timestamptz not null default timezone('utc', now()),
+  constraint folders_account_owner_fk foreign key (connected_account_id, user_id)
+    references public.connected_accounts(id, user_id),
+  constraint folders_entity_owner_fk foreign key (entity_id, user_id)
+    references public.organizational_entities(id, user_id),
+  unique (id, user_id),
   unique (user_id, connected_account_id, provider_folder_id)
 );
 
@@ -74,7 +81,9 @@ create table public.organization_rules (
   destination_folder_id uuid not null references public.destination_folders(id) on delete restrict,
   is_enabled boolean not null default true,
   created_at timestamptz not null default timezone('utc', now()),
-  updated_at timestamptz not null default timezone('utc', now())
+  updated_at timestamptz not null default timezone('utc', now()),
+  constraint rules_folder_owner_fk foreign key (destination_folder_id, user_id)
+    references public.destination_folders(id, user_id)
 );
 
 create table public.processing_jobs (
@@ -89,7 +98,8 @@ create table public.processing_jobs (
   attempts smallint not null default 0 check (attempts between 0 and 10),
   created_at timestamptz not null default timezone('utc', now()),
   updated_at timestamptz not null default timezone('utc', now()),
-  completed_at timestamptz
+  completed_at timestamptz,
+  unique (id, user_id)
 );
 
 create table public.document_metadata (
@@ -112,6 +122,12 @@ create table public.document_metadata (
   saved_at timestamptz,
   created_at timestamptz not null default timezone('utc', now()),
   updated_at timestamptz not null default timezone('utc', now()),
+  constraint documents_job_owner_fk foreign key (processing_job_id, user_id)
+    references public.processing_jobs(id, user_id),
+  constraint documents_entity_owner_fk foreign key (related_entity_id, user_id)
+    references public.organizational_entities(id, user_id),
+  constraint documents_folder_owner_fk foreign key (destination_folder_id, user_id)
+    references public.destination_folders(id, user_id),
   unique (user_id, provider_file_id)
 );
 
@@ -181,6 +197,8 @@ $$;
 
 create trigger on_auth_user_created after insert on auth.users for each row execute function public.handle_new_user();
 
+revoke execute on function public.handle_new_user() from public, anon, authenticated;
+
 alter table public.profiles enable row level security;
 alter table public.connected_accounts enable row level security;
 alter table public.organizational_entities enable row level security;
@@ -192,17 +210,37 @@ alter table public.audit_events enable row level security;
 alter table public.subscription_plans enable row level security;
 alter table public.subscriptions enable row level security;
 
-create policy profiles_owner_all on public.profiles for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-create policy accounts_owner_all on public.connected_accounts for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-create policy entities_owner_all on public.organizational_entities for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-create policy folders_owner_all on public.destination_folders for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-create policy rules_owner_all on public.organization_rules for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-create policy jobs_owner_all on public.processing_jobs for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-create policy documents_owner_all on public.document_metadata for all using (auth.uid() = user_id) with check (auth.uid() = user_id);
-create policy audit_owner_read on public.audit_events for select using (auth.uid() = user_id);
-create policy audit_owner_insert on public.audit_events for insert with check (auth.uid() = user_id);
-create policy plans_public_read on public.subscription_plans for select using (is_active = true);
-create policy subscriptions_owner_read on public.subscriptions for select using (auth.uid() = user_id);
+-- Future-feature tables are deliberately unavailable through the Data API until
+-- their phases add narrowly scoped policies and grants. Trusted database roles
+-- and the service role retain their normal administrative access.
+revoke all on table public.profiles from public, anon, authenticated;
+revoke all on table public.connected_accounts from public, anon, authenticated;
+revoke all on table public.organizational_entities from public, anon, authenticated;
+revoke all on table public.destination_folders from public, anon, authenticated;
+revoke all on table public.organization_rules from public, anon, authenticated;
+revoke all on table public.processing_jobs from public, anon, authenticated;
+revoke all on table public.document_metadata from public, anon, authenticated;
+revoke all on table public.audit_events from public, anon, authenticated;
+revoke all on sequence public.audit_events_id_seq from public, anon, authenticated;
+revoke all on table public.subscriptions from public, anon, authenticated;
+
+grant all on table public.profiles to service_role;
+grant all on table public.connected_accounts to service_role;
+grant all on table public.organizational_entities to service_role;
+grant all on table public.destination_folders to service_role;
+grant all on table public.organization_rules to service_role;
+grant all on table public.processing_jobs to service_role;
+grant all on table public.document_metadata to service_role;
+grant all on table public.audit_events to service_role;
+grant all on sequence public.audit_events_id_seq to service_role;
+grant all on table public.subscriptions to service_role;
+
+-- The inactive plan catalog is the only intentionally public table.
+revoke all on table public.subscription_plans from public, anon, authenticated;
+grant all on table public.subscription_plans to service_role;
+grant select on table public.subscription_plans to anon, authenticated;
+create policy plans_public_read on public.subscription_plans
+for select to anon, authenticated using (is_active = true);
 
 -- Provisional catalog only. Plans remain inactive and no billing records are created.
 insert into public.subscription_plans (id, display_name, price_eur_cents, is_provisional, is_active) values

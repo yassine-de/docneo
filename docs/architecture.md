@@ -2,7 +2,7 @@
 
 ## Status
 
-Phase 1 establishes boundaries and Phase 2 implements the public experience. External integrations remain adapters with no runtime credentials or network calls in the current codebase.
+Phases 1 and 2 establish the system boundaries and public experience. Phase 3 adds Supabase Auth, SSR cookie sessions, owner-scoped profiles, and a protected bilingual account area. Document, Google Drive, AI, and billing integrations remain inactive.
 
 ## System shape
 
@@ -25,8 +25,8 @@ The browser never receives provider secrets, service-role credentials, or refres
 
 - `src/app`: routes, metadata, and composition
 - `src/components`: reusable UI and landing experience
-- `src/features`: future domain modules (auth, Drive, processing, organization, billing)
-- `src/lib`: future provider clients, validation, encryption, and cross-cutting security
+- `src/features`: auth now, with future Drive, processing, organization, and billing modules
+- `src/lib`: Supabase SSR clients, site configuration, and future provider/security utilities
 - `src/i18n`: locale configuration and structured dictionaries
 - `supabase/migrations`: versioned database changes
 - `tests`: unit, integration, security, and later end-to-end tests
@@ -38,6 +38,7 @@ The browser never receives provider secrets, service-role credentials, or refres
 3. **Provider integrations are isolated.** Google Drive, OpenAI, and Stripe each sit behind a typed adapter so tests can use deterministic fakes.
 4. **Background work is a separate execution concern.** Upload endpoints should enqueue processing and return a job ID. Netlify request functions must not be used for OCR/AI work that may exceed payload or duration limits.
 5. **Localization is route-first.** `/de` and `/fr` are statically generated; dictionaries are server-loaded and client components receive only the copy they need.
+6. **Authentication is server-authorized.** The request proxy refreshes Supabase cookies, while protected layouts and every mutation independently verify the authenticated user. RLS is defense in depth, not the only authorization check.
 
 ## Google Drive permission model
 

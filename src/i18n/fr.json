@@ -147,6 +147,23 @@
     "notice": "Docneo est en cours de développement. Les intégrations et tarifs ne sont pas encore actifs.",
     "copyright": "© 2026 Docneo"
   },
+  "auth": {
+    "secure": "Accès sécurisé au compte",
+    "callbackError": "Ce lien est invalide ou expiré. Demandez-en un nouveau si nécessaire.",
+    "passwordHint": "Au moins 10 caractères, avec majuscule, minuscule et chiffre.",
+    "fields": { "email": "Adresse e-mail", "password": "Mot de passe", "newPassword": "Nouveau mot de passe", "confirmPassword": "Confirmer le mot de passe", "displayName": "Nom affiché (facultatif)" },
+    "login": { "title": "Heureux de vous revoir.", "text": "Connectez-vous en toute sécurité pour retrouver votre espace documentaire.", "heading": "Se connecter à Docneo", "submit": "Se connecter", "pending": "Connexion en cours…", "forgot": "Mot de passe oublié ?", "noAccount": "Pas encore de compte ?", "signup": "Créer un compte" },
+    "signup": { "title": "Votre classement commence ici.", "text": "Créez votre compte. Aucun document ne sera enregistré sans votre validation.", "heading": "Créer un compte", "submit": "Créer mon compte", "pending": "Création du compte…", "hasAccount": "Déjà inscrit ?", "login": "Se connecter" },
+    "forgot": { "title": "Récupérez votre accès.", "text": "Nous vous enverrons un lien temporaire pour réinitialiser votre mot de passe.", "heading": "Mot de passe oublié", "submit": "Recevoir le lien", "pending": "Préparation de l’e-mail…", "remember": "Vous vous souvenez du mot de passe ?", "login": "Retour à la connexion" },
+    "reset": { "title": "Choisissez un nouveau mot de passe.", "text": "Utilisez un mot de passe fort et unique pour votre compte Docneo.", "heading": "Modifier le mot de passe", "submit": "Enregistrer le mot de passe", "pending": "Enregistrement…", "back": "Terminé ?", "login": "Retour à la connexion" },
+    "confirmation": { "title": "Vous y êtes presque.", "text": "Veuillez confirmer votre adresse e-mail.", "heading": "Consultez votre boîte de réception", "detail": "Ouvrez le lien de confirmation envoyé par Docneo. Vous pourrez ensuite vous connecter.", "login": "Retour à la connexion" }
+  },
+  "app": {
+    "nav": { "dashboard": "Vue d'ensemble", "upload": "Importer un document", "documents": "Documents", "organisation": "Organisation", "drive": "Google Drive", "settings": "Paramètres", "logout": "Se déconnecter", "language": "Deutsch", "planned": "Bientôt" },
+    "dashboard": { "eyebrow": "Espace personnel", "title": "Bonjour.", "text": "Votre centre documentaire sécurisé prend forme ici.", "upload": "Importer un document", "driveStatus": "Google Drive n'est pas encore connecté", "driveText": "La connexion sera mise en place uniquement pendant la phase 4.", "recentTitle": "Documents récents", "recentEmpty": "Aucun document pour le moment. L’import sera activé dans une phase ultérieure.", "reviewTitle": "À vérifier", "reviewEmpty": "Aucun document n’attend votre validation.", "checklistEyebrow": "Premiers pas", "checklistTitle": "Un démarrage sécurisé", "checklist": ["Adresse e-mail confirmée", "Compléter le profil", "Connecter Google Drive plus tard", "Importer un premier document plus tard"], "nextEyebrow": "Prêt pour la suite", "nextTitle": "Votre compte est configuré", "nextText": "Vérifiez votre nom affiché et vos paramètres de sécurité.", "settings": "Ouvrir les paramètres" },
+    "documents": { "eyebrow": "Espace documentaire", "title": "Documents", "text": "Un espace clair pour vos futurs classements validés.", "emptyTitle": "Aucun document classé", "emptyText": "L’import et l’analyse documentaire seront activés dans une phase ultérieure." },
+    "settings": { "eyebrow": "Compte et sécurité", "title": "Paramètres", "text": "Gérez votre profil et vos informations d’accès.", "profileTitle": "Profil", "profileText": "Votre adresse e-mail reste fixe ; vous pouvez modifier le nom affiché.", "passwordTitle": "Mot de passe", "passwordText": "Actualisez régulièrement votre mot de passe et réservez-le à Docneo.", "save": "Enregistrer le profil", "passwordSave": "Modifier le mot de passe", "saving": "Enregistrement…", "plannedTitle": "Autres fonctions du compte", "plannedText": "Les comptes Google, abonnements, exports et suppressions de compte sont préparés pour de futures phases, sans être activés.", "plannedBadge": "Prévu" }
+  },
   "placeholder": {
     "badge": "En préparation",
     "title": "Cette page est en cours de création.",

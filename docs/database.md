@@ -1,16 +1,16 @@
 # Database design
 
-The baseline schema is defined in `supabase/migrations/202610140001_initial_schema.sql`. It is a design-ready migration and has not been applied to any remote Supabase project.
+The baseline schema is defined in `supabase/migrations/202610140001_initial_schema.sql`. Phase 3 adds authenticated profiles through `supabase/migrations/202610140002_phase3_auth_profiles.sql`. Migrations are committed for review and are not applied to a remote project automatically.
 
 ## Ownership model
 
-Every tenant-owned row either contains `user_id` directly or is reachable only through a parent row owned by that user. Row Level Security is enabled on all application tables. Policies compare `auth.uid()` to the row owner; server-side authorization remains mandatory as a second control.
+Every tenant-owned row contains `user_id`. Composite foreign keys include that `user_id` when one tenant-owned row references another, preventing a row from linking to another user's account, entity, folder, or processing job. Row Level Security is enabled on all application tables; server-side authorization remains mandatory as a second control.
 
 ## Tables
 
 | Table | Purpose | Sensitive fields |
 | --- | --- | --- |
-| `profiles` | Locale, lifecycle and retention preferences | account identity |
+| `profiles` | Email mirror, display name, locale, lifecycle and retention preferences | account identity |
 | `connected_accounts` | Google connection state | encrypted token ciphertext only |
 | `organizational_entities` | Person, property, company and project records | user-defined labels |
 | `destination_folders` | Explicitly authorized Drive destinations | provider folder IDs |
@@ -20,6 +20,10 @@ Every tenant-owned row either contains `user_id` directly or is reachable only t
 | `audit_events` | Security and consent evidence | redacted contextual metadata |
 | `subscription_plans` | Future catalog definition | none |
 | `subscriptions` | Future billing state | provider customer/subscription IDs |
+
+The Phase 3 policy allows authenticated users to select only their own profile and update only `display_name` and `locale`. Profile creation and email synchronization are owned by database triggers; browser clients cannot insert or delete profiles or change ownership and email columns.
+
+All future-feature tables are unavailable to `anon` and `authenticated` until their implementation phases add explicit grants and narrowly scoped policies. This includes `audit_events`, whose integrity requires trusted server-side writers. The inactive plan catalog is the sole exception: it grants read access but its RLS policy exposes only active plans.
 
 ## Data rules
 

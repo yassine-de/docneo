@@ -147,6 +147,23 @@
     "notice": "Docneo befindet sich in Entwicklung. Integrationen und Preise sind noch nicht aktiv.",
     "copyright": "© 2026 Docneo"
   },
+  "auth": {
+    "secure": "Sicherer Kontozugang",
+    "callbackError": "Der Link ist ungültig oder abgelaufen. Bitte fordere bei Bedarf einen neuen an.",
+    "passwordHint": "Mindestens 10 Zeichen mit Groß- und Kleinbuchstaben sowie einer Zahl.",
+    "fields": { "email": "E-Mail-Adresse", "password": "Passwort", "newPassword": "Neues Passwort", "confirmPassword": "Passwort bestätigen", "displayName": "Anzeigename (optional)" },
+    "login": { "title": "Willkommen zurück.", "text": "Melde dich sicher an und behalte deine Dokumentenablage im Blick.", "heading": "Bei Docneo anmelden", "submit": "Anmelden", "pending": "Anmeldung läuft …", "forgot": "Passwort vergessen?", "noAccount": "Noch kein Konto?", "signup": "Kostenlos registrieren" },
+    "signup": { "title": "Deine Ablage beginnt hier.", "text": "Erstelle dein Konto. Erst nach deiner Bestätigung werden Dokumente gespeichert.", "heading": "Konto erstellen", "submit": "Konto erstellen", "pending": "Konto wird erstellt …", "hasAccount": "Schon registriert?", "login": "Anmelden" },
+    "forgot": { "title": "Zugang wiederherstellen.", "text": "Wir senden dir einen zeitlich begrenzten Link zum sicheren Zurücksetzen.", "heading": "Passwort vergessen", "submit": "Link anfordern", "pending": "E-Mail wird vorbereitet …", "remember": "Passwort wieder eingefallen?", "login": "Zur Anmeldung" },
+    "reset": { "title": "Neues Passwort festlegen.", "text": "Wähle ein starkes, einzigartiges Passwort für dein Docneo-Konto.", "heading": "Passwort ändern", "submit": "Passwort speichern", "pending": "Passwort wird gespeichert …", "back": "Fertig?", "login": "Zur Anmeldung" },
+    "confirmation": { "title": "Fast geschafft.", "text": "Bitte bestätige deine E-Mail-Adresse.", "heading": "Posteingang prüfen", "detail": "Öffne den Bestätigungslink in der E-Mail von Docneo. Danach kannst du dich anmelden.", "login": "Zur Anmeldung" }
+  },
+  "app": {
+    "nav": { "dashboard": "Übersicht", "upload": "Dokument hochladen", "documents": "Dokumente", "organisation": "Organisation", "drive": "Google Drive", "settings": "Einstellungen", "logout": "Sicher abmelden", "language": "Français", "planned": "Bald" },
+    "dashboard": { "eyebrow": "Persönlicher Arbeitsbereich", "title": "Guten Tag.", "text": "Hier entsteht deine sichere Dokumentenzentrale.", "upload": "Dokument hochladen", "driveStatus": "Google Drive noch nicht verbunden", "driveText": "Die Verbindung wird erst in Phase 4 eingerichtet.", "recentTitle": "Letzte Dokumente", "recentEmpty": "Noch keine Dokumente. Der Upload wird in einer späteren Phase aktiviert.", "reviewTitle": "Zu prüfen", "reviewEmpty": "Keine Dokumente warten auf deine Prüfung.", "checklistEyebrow": "Erste Schritte", "checklistTitle": "Dein sicherer Start", "checklist": ["E-Mail-Adresse bestätigt", "Profil vervollständigen", "Google Drive später verbinden", "Erstes Dokument später hochladen"], "nextEyebrow": "Bereit für den nächsten Schritt", "nextTitle": "Dein Konto ist eingerichtet", "nextText": "Prüfe deinen Anzeigenamen und deine Sicherheitseinstellungen.", "settings": "Einstellungen öffnen" },
+    "documents": { "eyebrow": "Dokumentenablage", "title": "Dokumente", "text": "Ein klarer Ort für alle später bestätigten Ablagen.", "emptyTitle": "Noch nichts abgelegt", "emptyText": "Der Upload und die Dokumentanalyse werden erst in einer späteren Phase aktiviert." },
+    "settings": { "eyebrow": "Konto & Sicherheit", "title": "Einstellungen", "text": "Verwalte dein Profil und deine Zugangsdaten.", "profileTitle": "Profil", "profileText": "Deine E-Mail-Adresse ist unveränderlich; den Anzeigenamen kannst du bearbeiten.", "passwordTitle": "Passwort", "passwordText": "Aktualisiere dein Passwort regelmäßig und verwende es nur für Docneo.", "save": "Profil speichern", "passwordSave": "Passwort ändern", "saving": "Wird gespeichert …", "plannedTitle": "Weitere Kontofunktionen", "plannedText": "Google-Konten, Abonnements, Datenexport und Kontolöschung sind architektonisch vorbereitet und werden erst in späteren Phasen aktiviert.", "plannedBadge": "Geplant" }
+  },
   "placeholder": {
     "badge": "In Vorbereitung",
     "title": "Diese Seite entsteht gerade.",
