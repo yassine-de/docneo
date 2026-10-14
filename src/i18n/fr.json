@@ -1,0 +1,156 @@
+{
+  "meta": {
+    "title": "Docneo – Classement intelligent de documents",
+    "description": "Photographiez vos documents, faites-les analyser par l’IA et classez-les dans le bon dossier Google Drive après validation."
+  },
+  "nav": {
+    "how": "Comment ça marche",
+    "forWhom": "Pour qui",
+    "security": "Sécurité",
+    "pricing": "Tarifs",
+    "login": "Connexion",
+    "demo": "Voir la démo",
+    "language": "Deutsch"
+  },
+  "hero": {
+    "eyebrow": "Le classement qui réfléchit avec vous",
+    "titleLine1": "Vos documents.",
+    "titleLine2": "Classés intelligemment.",
+    "subtitle": "Photographiez vos factures, contrats et courriers. Docneo analyse leur contenu et vous propose le bon dossier Google Drive.",
+    "primary": "Voir la démo",
+    "secondary": "Comment ça marche",
+    "trust": "Vous validez chaque enregistrement",
+    "formats": "PDF · JPEG · PNG · HEIC prévu"
+  },
+  "demo": {
+    "eyebrow": "Démo interactive du produit",
+    "title": "Du papier au bon dossier.",
+    "description": "Découvrez le parcours prévu avec des données d’exemple. Cette démo n’est reliée ni à Google Drive ni à une IA.",
+    "example": "Mode exemple",
+    "steps": ["Importer", "Analyser", "Vérifier", "Enregistrer"],
+    "dropTitle": "Déposez le document ici",
+    "dropText": "ou choisissez la facture d’exemple",
+    "choose": "Lancer l’exemple",
+    "fileName": "Facture_Mobile_Octobre.pdf",
+    "fileMeta": "PDF · 184 Ko · Document d’exemple",
+    "analyzing": "Analyse du document…",
+    "signals": ["Lecture du texte", "Identification du type", "Recherche du dossier cible"],
+    "reviewTitle": "Vérifier la suggestion",
+    "reviewHint": "Toutes les données restent modifiables avant l’enregistrement.",
+    "fields": {
+      "type": "Type de document",
+      "typeValue": "Facture",
+      "issuer": "Émetteur",
+      "issuerValue": "Orange France",
+      "date": "Date du document",
+      "dateValue": "14/10/2026",
+      "category": "Catégorie",
+      "categoryValue": "Télécommunications",
+      "filename": "Nom de fichier suggéré",
+      "filenameValue": "2026-10-14_Orange_Facture.pdf",
+      "folder": "Dossier suggéré",
+      "folderValue": "Famille / Contrats / Mobile"
+    },
+    "confidence": "Niveau de confiance élevé",
+    "confirm": "Simuler l’enregistrement",
+    "back": "Retour",
+    "saving": "Confirmation de l’enregistrement…",
+    "successTitle": "C’est prêt. Bien classé.",
+    "successText": "Dans l’application réelle, cette confirmation ne s’affichera qu’après validation de l’envoi par Google Drive.",
+    "successFolder": "Famille / Contrats / Mobile",
+    "restart": "Recommencer la démo"
+  },
+  "how": {
+    "eyebrow": "Un parcours simple",
+    "title": "Trois étapes. Vous gardez la main.",
+    "description": "Docneo se charge du classement, mais jamais de la décision à votre place.",
+    "items": [
+      {"title": "Scanner ou importer", "text": "Photographiez un document sur mobile ou choisissez un fichier existant."},
+      {"title": "L’IA analyse", "text": "Le type, la date, l’émetteur et le rattachement approprié sont suggérés."},
+      {"title": "Vérifier et enregistrer", "text": "Modifiez les informations, choisissez le dossier cible et confirmez explicitement."}
+    ]
+  },
+  "audiences": {
+    "eyebrow": "Pour votre quotidien",
+    "title": "Une organisation qui vous ressemble.",
+    "description": "Aucune arborescence imposée. Docneo s’adapte aux personnes, biens, entreprises et projets que vous créez.",
+    "items": [
+      {"kind": "Familles", "title": "Moins de papiers à gérer au quotidien", "text": "Rattachez les dossiers scolaires, assurances, frais médicaux et contrats à la bonne personne.", "tags": ["Personnes", "École", "Assurance"]},
+      {"kind": "Propriétaires", "title": "Chaque bien parfaitement documenté", "text": "Regroupez factures, entretien et contrats de location de façon claire pour chaque bien.", "tags": ["Biens", "Entretien", "Contrats"]},
+      {"kind": "Petites entreprises", "title": "Chaque pièce au bon endroit pour l’équipe", "text": "Classez factures fournisseurs, courriers et documents projet dans vos structures existantes.", "tags": ["Entreprises", "Projets", "Factures"]}
+    ]
+  },
+  "drive": {
+    "eyebrow": "Google Drive reste votre espace",
+    "title": "Votre classement. Pas le nôtre.",
+    "description": "Après votre validation, Docneo enregistre le document dans un dossier Google Drive que vous avez autorisé. Seules les métadonnées nécessaires au suivi sont conservées.",
+    "points": ["Vous choisissez ou autorisez chaque dossier", "Aucun fichier existant n’est écrasé silencieusement", "La connexion peut être révoquée à tout moment"],
+    "note": "Intégration prévue · non connectée",
+    "folder": "Mon Drive / Famille / Contrats",
+    "file": "2026-10-14_Orange_Facture.pdf"
+  },
+  "security": {
+    "eyebrow": "La confidentialité dès la conception",
+    "title": "Pensé pour les documents sensibles.",
+    "description": "La sécurité fait partie de l’architecture, pas d’une option ajoutée avant le lancement.",
+    "items": [
+      {"title": "Données minimisées", "text": "Le contenu n’est traité que pendant la durée nécessaire à l’analyse et au classement."},
+      {"title": "Validation explicite", "text": "Les suggestions de l’IA ne déclenchent aucune action privilégiée. Vous validez le dossier et le nom."},
+      {"title": "Accès isolés", "text": "Le chiffrement des jetons, l’autorisation serveur et la Row Level Security sont prévus."}
+    ],
+    "disclaimer": "L’architecture est conçue en tenant compte des exigences du RGPD. Une validation juridique restera nécessaire avant la mise en production."
+  },
+  "pricing": {
+    "eyebrow": "Aperçu des tarifs",
+    "title": "Une formule pour chaque organisation.",
+    "description": "Tarifs provisoires à titre indicatif. Les paiements ne sont pas activés et les limites seront définies clairement avant le lancement.",
+    "badge": "Provisoire",
+    "month": "/ mois",
+    "cta": "Manifester mon intérêt",
+    "plans": [
+      {"name": "Personal", "price": "5,90 €", "for": "Pour les particuliers et les familles"},
+      {"name": "Property", "price": "12,90 €", "for": "Pour les propriétaires bailleurs"},
+      {"name": "Pro", "price": "19,90 €", "for": "Pour les indépendants et petites équipes"},
+      {"name": "Business", "price": "39,90 €", "for": "Pour les entreprises en croissance"}
+    ]
+  },
+  "faq": {
+    "eyebrow": "Bon à savoir",
+    "title": "Questions fréquentes",
+    "items": [
+      {"q": "Mes documents restent-ils dans Google Drive ?", "a": "Oui. Après votre confirmation explicite, Docneo enregistrera le fichier dans un dossier autorisé de votre Google Drive. Cette intégration sera réalisée dans une phase ultérieure."},
+      {"q": "Comment les documents sont-ils protégés ?", "a": "Des connexions chiffrées, une gestion sécurisée des jetons côté serveur, une isolation stricte et un traitement temporaire limité sont prévus."},
+      {"q": "Quels types de fichiers seront acceptés ?", "a": "PDF, JPEG, PNG et les fichiers HEIC pris en charge sont prévus. Le contenu et le type seront contrôlés côté serveur."},
+      {"q": "Que se passe-t-il si l’IA se trompe ?", "a": "Chaque suggestion reste modifiable. En cas de confiance insuffisante ou de plusieurs rattachements possibles, votre sélection sera requise."},
+      {"q": "Puis-je corriger les informations ?", "a": "Oui. Le type, l’émetteur, la date, la catégorie, le rattachement, le nom et le dossier resteront modifiables avant l’enregistrement."},
+      {"q": "Docneo est-il disponible en allemand et en français ?", "a": "Oui. Le site public existe déjà dans les deux langues et les autres espaces du produit suivront la même approche."},
+      {"q": "Puis-je supprimer mes données ?", "a": "La suppression du compte, l’export des données et des délais de conservation définis font partie des fonctions prévues. Les détails seront publiés avant le lancement."}
+    ]
+  },
+  "final": {
+    "eyebrow": "Scan. Organize. Done.",
+    "title": "Dites adieu aux piles de documents.",
+    "text": "Découvrez comment Docneo transforme une photo en document vérifié et bien classé.",
+    "cta": "Essayer la démo"
+  },
+  "footer": {
+    "tagline": "Vos documents. Automatiquement classés.",
+    "product": "Produit",
+    "company": "Informations",
+    "features": "Fonctionnalités",
+    "pricing": "Tarifs",
+    "login": "Connexion",
+    "privacy": "Confidentialité",
+    "terms": "Conditions d’utilisation",
+    "imprint": "Mentions légales",
+    "contact": "Contact",
+    "notice": "Docneo est en cours de développement. Les intégrations et tarifs ne sont pas encore actifs.",
+    "copyright": "© 2026 Docneo"
+  },
+  "placeholder": {
+    "badge": "En préparation",
+    "title": "Cette page est en cours de création.",
+    "text": "Le contenu définitif sera ajouté avant le lancement et, si nécessaire, validé juridiquement.",
+    "back": "Retour à l’accueil"
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "meta": {
+    "title": "Docneo – Dokumente automatisch organisieren",
+    "description": "Dokumente fotografieren, mit KI analysieren und nach deiner Freigabe im richtigen Google-Drive-Ordner ablegen."
+  },
+  "nav": {
+    "how": "So funktioniert’s",
+    "forWhom": "Für wen",
+    "security": "Sicherheit",
+    "pricing": "Preise",
+    "login": "Anmelden",
+    "demo": "Demo ansehen",
+    "language": "Français"
+  },
+  "hero": {
+    "eyebrow": "Dokumentenablage, die mitdenkt",
+    "titleLine1": "Deine Dokumente.",
+    "titleLine2": "Automatisch organisiert.",
+    "subtitle": "Fotografiere Rechnungen, Verträge und Briefe. Docneo erkennt den Inhalt und schlägt den richtigen Google-Drive-Ordner vor.",
+    "primary": "Demo ansehen",
+    "secondary": "So funktioniert’s",
+    "trust": "Du entscheidest vor jedem Speichern",
+    "formats": "PDF · JPEG · PNG · HEIC geplant"
+  },
+  "demo": {
+    "eyebrow": "Interaktive Produktdemo",
+    "title": "Vom Papier in den richtigen Ordner.",
+    "description": "Erlebe den geplanten Ablauf mit Beispieldaten. Diese Demo ist nicht mit Google Drive oder einer KI verbunden.",
+    "example": "Beispielmodus",
+    "steps": ["Hochladen", "Analysieren", "Prüfen", "Speichern"],
+    "dropTitle": "Dokument hier ablegen",
+    "dropText": "oder Beispielrechnung auswählen",
+    "choose": "Beispiel starten",
+    "fileName": "Mobilfunk_Rechnung_Oktober.pdf",
+    "fileMeta": "PDF · 184 KB · Beispieldokument",
+    "analyzing": "Dokument wird analysiert …",
+    "signals": ["Text wird gelesen", "Dokumenttyp wird erkannt", "Ablageziel wird ermittelt"],
+    "reviewTitle": "Vorschlag prüfen",
+    "reviewHint": "Alle Angaben bleiben vor dem Speichern editierbar.",
+    "fields": {
+      "type": "Dokumenttyp",
+      "typeValue": "Rechnung",
+      "issuer": "Absender",
+      "issuerValue": "Telekom Deutschland GmbH",
+      "date": "Dokumentdatum",
+      "dateValue": "14.10.2026",
+      "category": "Kategorie",
+      "categoryValue": "Telekommunikation",
+      "filename": "Vorgeschlagener Dateiname",
+      "filenameValue": "2026-10-14_Telekom_Rechnung.pdf",
+      "folder": "Vorgeschlagener Ordner",
+      "folderValue": "Familie / Verträge / Mobilfunk"
+    },
+    "confidence": "Hohe Erkennungssicherheit",
+    "confirm": "Speichern simulieren",
+    "back": "Zurück",
+    "saving": "Speichern wird bestätigt …",
+    "successTitle": "Bereit. Sauber abgelegt.",
+    "successText": "In der echten Anwendung erscheint diese Bestätigung erst, wenn Google Drive den Upload bestätigt.",
+    "successFolder": "Familie / Verträge / Mobilfunk",
+    "restart": "Demo neu starten"
+  },
+  "how": {
+    "eyebrow": "Einfacher Ablauf",
+    "title": "Drei Schritte. Volle Kontrolle.",
+    "description": "Docneo nimmt dir die Sortierarbeit ab – aber niemals die Entscheidung.",
+    "items": [
+      {"title": "Scannen oder hochladen", "text": "Fotografiere ein Dokument mobil oder wähle eine vorhandene Datei aus."},
+      {"title": "KI analysiert", "text": "Dokumenttyp, Datum, Absender und passende Zuordnung werden vorgeschlagen."},
+      {"title": "Prüfen und speichern", "text": "Bearbeite die Angaben, wähle den Zielordner und bestätige ausdrücklich."}
+    ]
+  },
+  "audiences": {
+    "eyebrow": "Für deinen Alltag",
+    "title": "Ordnung, die zu dir passt.",
+    "description": "Keine starre Ordnerstruktur. Docneo orientiert sich an Personen, Immobilien, Unternehmen und Projekten, die du selbst anlegst.",
+    "items": [
+      {"kind": "Familien", "title": "Weniger Papierchaos im Familienalltag", "text": "Ordne Schulunterlagen, Versicherungen, Arztrechnungen und Verträge der richtigen Person zu.", "tags": ["Personen", "Schule", "Versicherung"]},
+      {"kind": "Vermietende", "title": "Jede Immobilie sauber dokumentiert", "text": "Führe Rechnungen, Wartungsbelege und Mietverträge nachvollziehbar je Objekt zusammen.", "tags": ["Immobilien", "Wartung", "Verträge"]},
+      {"kind": "Kleine Unternehmen", "title": "Belege dort, wo dein Team sie erwartet", "text": "Sortiere Lieferantenrechnungen, Korrespondenz und Projektunterlagen in bestehende Strukturen.", "tags": ["Unternehmen", "Projekte", "Belege"]}
+    ]
+  },
+  "drive": {
+    "eyebrow": "Google Drive bleibt dein Zuhause",
+    "title": "Deine Ablage. Nicht unsere.",
+    "description": "Nach deiner Bestätigung speichert Docneo das Dokument in einem von dir autorisierten Google-Drive-Ordner. Docneo führt nur die notwendigen Metadaten für Verlauf und Organisation.",
+    "points": ["Ordner werden von dir ausgewählt oder freigegeben", "Bestehende Dateien werden nicht still überschrieben", "Verbindung kann jederzeit getrennt werden"],
+    "note": "Geplante Integration · noch nicht verbunden",
+    "folder": "Meine Ablage / Familie / Verträge",
+    "file": "2026-10-14_Telekom_Rechnung.pdf"
+  },
+  "security": {
+    "eyebrow": "Datenschutz von Anfang an",
+    "title": "Für sensible Dokumente entworfen.",
+    "description": "Sicherheit ist Teil der Architektur – nicht ein Zusatz kurz vor dem Start.",
+    "items": [
+      {"title": "Minimierte Daten", "text": "Dokumentinhalte werden nur so lange verarbeitet, wie es für Analyse und Ablage erforderlich ist."},
+      {"title": "Explizite Freigabe", "text": "KI-Vorschläge lösen keine privilegierten Aktionen aus. Du bestätigst Ziel und Dateiname."},
+      {"title": "Getrennte Zugriffe", "text": "Geplant sind verschlüsselte Tokens, serverseitige Autorisierung und Row Level Security."}
+    ],
+    "disclaimer": "Die Architektur wird mit Blick auf DSGVO-Anforderungen entwickelt. Eine rechtliche Prüfung vor dem Produktivstart bleibt erforderlich."
+  },
+  "pricing": {
+    "eyebrow": "Preisvorschau",
+    "title": "Ein Plan für jede Ablage.",
+    "description": "Vorläufige Preise zur Orientierung. Zahlungen sind noch nicht aktiviert; Leistungsgrenzen werden vor dem Start transparent festgelegt.",
+    "badge": "Vorläufig",
+    "month": "/ Monat",
+    "cta": "Interesse vormerken",
+    "plans": [
+      {"name": "Personal", "price": "5,90 €", "for": "Für Einzelpersonen und Familien"},
+      {"name": "Property", "price": "12,90 €", "for": "Für private Vermietende"},
+      {"name": "Pro", "price": "19,90 €", "for": "Für Selbstständige und kleine Teams"},
+      {"name": "Business", "price": "39,90 €", "for": "Für wachsende Unternehmen"}
+    ]
+  },
+  "faq": {
+    "eyebrow": "Gut zu wissen",
+    "title": "Häufige Fragen",
+    "items": [
+      {"q": "Bleiben meine Dokumente in Google Drive?", "a": "Ja. Nach deiner ausdrücklichen Bestätigung soll Docneo die Datei in einem autorisierten Ordner deines Google Drive speichern. Die Integration wird in einer späteren Phase umgesetzt."},
+      {"q": "Wie werden Dokumente geschützt?", "a": "Geplant sind verschlüsselte Verbindungen, sichere serverseitige Token-Verwaltung, strikte Mandantentrennung und eine zeitlich begrenzte Zwischenverarbeitung."},
+      {"q": "Welche Dateitypen werden unterstützt?", "a": "Vorgesehen sind PDF, JPEG, PNG und unterstützte HEIC-Dateien. Inhalte und Dateitypen werden serverseitig geprüft."},
+      {"q": "Was passiert, wenn die KI falsch liegt?", "a": "Jeder Vorschlag bleibt editierbar. Bei geringer Sicherheit oder mehreren möglichen Zuordnungen ist eine manuelle Auswahl erforderlich."},
+      {"q": "Kann ich Angaben manuell korrigieren?", "a": "Ja. Dokumenttyp, Absender, Datum, Kategorie, Zuordnung, Dateiname und Zielordner sollen vor dem Speichern änderbar sein."},
+      {"q": "Gibt es Docneo auf Deutsch und Französisch?", "a": "Ja. Die öffentliche Oberfläche ist bereits in beiden Sprachen angelegt; weitere Produktbereiche folgen ebenfalls zweisprachig."},
+      {"q": "Kann ich meine Daten löschen?", "a": "Kontolöschung, Datenexport und definierte Löschfristen sind Teil der geplanten Datenschutzfunktionen. Details werden vor dem Start veröffentlicht."}
+    ]
+  },
+  "final": {
+    "eyebrow": "Scan. Organize. Done.",
+    "title": "Mach Schluss mit dem Dokumentenstapel.",
+    "text": "Sieh dir an, wie Docneo aus einem Foto eine sauber geprüfte Ablage macht.",
+    "cta": "Demo ausprobieren"
+  },
+  "footer": {
+    "tagline": "Deine Dokumente. Automatisch organisiert.",
+    "product": "Produkt",
+    "company": "Rechtliches",
+    "features": "Funktionen",
+    "pricing": "Preise",
+    "login": "Anmelden",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "imprint": "Impressum",
+    "contact": "Kontakt",
+    "notice": "Docneo befindet sich in Entwicklung. Integrationen und Preise sind noch nicht aktiv.",
+    "copyright": "© 2026 Docneo"
+  },
+  "placeholder": {
+    "badge": "In Vorbereitung",
+    "title": "Diese Seite entsteht gerade.",
+    "text": "Der endgültige Inhalt wird vor dem Produktstart ergänzt und – wo erforderlich – rechtlich geprüft.",
+    "back": "Zurück zur Startseite"
+  }
+}
