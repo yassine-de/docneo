@@ -151,6 +151,7 @@
     "secure": "Accès sécurisé au compte",
     "callbackError": "Ce lien est invalide ou expiré. Demandez-en un nouveau si nécessaire.",
     "passwordHint": "Au moins 10 caractères, avec majuscule, minuscule et chiffre.",
+    "google": { "continue": "Continuer avec Google", "pending": "Redirection vers Google…", "divider": "ou avec une adresse e-mail", "error": "La connexion avec Google n’a pas pu démarrer. Veuillez réessayer." },
     "fields": { "email": "Adresse e-mail", "password": "Mot de passe", "newPassword": "Nouveau mot de passe", "confirmPassword": "Confirmer le mot de passe", "displayName": "Nom affiché (facultatif)" },
     "login": { "title": "Heureux de vous revoir.", "text": "Connectez-vous en toute sécurité pour retrouver votre espace documentaire.", "heading": "Se connecter à Docneo", "submit": "Se connecter", "pending": "Connexion en cours…", "forgot": "Mot de passe oublié ?", "noAccount": "Pas encore de compte ?", "signup": "Créer un compte" },
     "signup": { "title": "Votre classement commence ici.", "text": "Créez votre compte. Aucun document ne sera enregistré sans votre validation.", "heading": "Créer un compte", "submit": "Créer mon compte", "pending": "Création du compte…", "hasAccount": "Déjà inscrit ?", "login": "Se connecter" },

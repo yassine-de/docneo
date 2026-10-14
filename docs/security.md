@@ -19,6 +19,8 @@ Browser input, uploaded files, extracted text, AI responses, OAuth responses, we
 ## Authentication controls (Phase 3)
 
 - Login errors are generic and recovery responses do not reveal whether an account exists.
+- Google login uses Supabase's PKCE flow with identity-only `openid email profile` scopes. Google Drive permissions are deliberately excluded and must use a later, separate authorization flow.
+- Supabase automatic identity linking may join a Google identity to an existing user only when the provider email is verified; manual identity linking is not enabled in this phase.
 - Confirmation and recovery tokens are exchanged only by the server callback and callback responses are private/no-store.
 - Redirect targets are allowlisted to localized in-app routes to prevent open redirects.
 - Password input is length-bounded and requires at least ten characters, upper- and lowercase letters, and a number.

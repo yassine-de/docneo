@@ -17,6 +17,7 @@ This repository contains **Phase 1 (architecture)**, **Phase 2 (premium bilingua
 - Architecture, security, database, deployment, and roadmap documentation
 - Automated localization/content contract tests
 - Supabase email/password authentication with SSR cookie sessions
+- Supabase Google identity login with no Google Drive permissions
 - Localized signup, email confirmation, login, recovery, and password reset flows
 - Server-protected dashboard, documents, and settings routes
 - Owner-scoped profile records with Row Level Security
@@ -85,4 +86,4 @@ Before the first deployment, set `NEXT_PUBLIC_SITE_URL` separately for Productio
 
 ## Current limitations
 
-All document and Google Drive activity shown on the landing page and dashboard is simulated. Authentication and profile storage are the only live-capable integrations. No document is uploaded, analyzed, persisted, or sent to a third party. Prices are provisional and payments are disabled.
+All document and Google Drive activity shown on the landing page and dashboard is simulated. Email/password and Google identity authentication plus profile storage are the only live-capable integrations. Google login does not grant Drive access. No document is uploaded, analyzed, persisted, or sent to a document-storage provider. Prices are provisional and payments are disabled.

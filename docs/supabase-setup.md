@@ -47,8 +47,52 @@ The application supplies a localized `/de/auth/callback` or `/fr/auth/callback` 
 
 Review Supabase Auth rate limits before launch. Add a distributed edge/server rate limiter for login, signup, and recovery attempts by IP and normalized account identifier; an in-memory counter is intentionally avoided because it is unreliable across Netlify function instances. Keep generic responses so the limiter does not introduce account enumeration.
 
-## 4. Verify locally
+## 4. Configure Google identity login
 
-Restart `npm run dev` after changing environment variables. Test signup, email confirmation, login, forgot-password, recovery, password update, logout, and direct navigation to all protected routes in both languages.
+Google login is an identity-only Supabase Auth flow. It requests exactly `openid email profile`. It does **not** request Google Drive permissions, create a Drive connection, or store Google provider tokens for document access. Drive authorization remains a separate, later workflow with separate consent.
 
-The automated suite validates input rules, redirect safety, anonymous route behavior, translation parity, and profile-policy structure. A live Supabase test project is still required to verify email delivery, token exchange, and RLS behavior against the deployed database.
+### Google Cloud Console
+
+Do not create or change production credentials without project-owner approval.
+
+1. Open **Google Cloud Console → Google Auth Platform** for the approved Google Cloud project.
+2. Under **Branding**, configure the Docneo application name, support email, authorized domain, homepage, privacy-policy URL, and terms URL. Submit branding verification if Google requires it.
+3. Under **Audience**, select the appropriate Internal or External audience. While the app is in testing, add only approved test users.
+4. Under **Data Access**, keep only these identity scopes:
+   - `openid`
+   - `https://www.googleapis.com/auth/userinfo.email`
+   - `https://www.googleapis.com/auth/userinfo.profile`
+5. Do not add any `drive`, `drive.file`, `drive.readonly`, or other Google Drive scope.
+6. Under **Clients**, create an OAuth client of type **Web application**.
+7. Add these authorized JavaScript origins:
+   - `http://localhost:3000`
+   - `https://docneo-codex.netlify.app`
+8. Add this exact authorized redirect URI:
+   - `https://axmeokgpohcgukenxude.supabase.co/auth/v1/callback`
+9. Store the generated Client ID and Client Secret in the Supabase provider configuration only. Never commit them or add the Client Secret to a `NEXT_PUBLIC_` variable.
+
+If a Supabase custom domain is introduced later, copy the replacement callback URL shown by Supabase into the Google OAuth client before switching domains.
+
+### Supabase Dashboard
+
+1. Open project `axmeokgpohcgukenxude`.
+2. Go to **Authentication → Providers → Google**.
+3. Enable Google and enter the approved Google Client ID and Client Secret.
+4. Confirm that the callback URL shown by Supabase is exactly `https://axmeokgpohcgukenxude.supabase.co/auth/v1/callback`.
+5. Keep **Authentication → URL Configuration** set to:
+   - Site URL: `https://docneo-codex.netlify.app`
+   - Redirect URL: `http://localhost:3000/**`
+   - Redirect URL: `https://docneo-codex.netlify.app/**`
+6. Leave automatic identity linking at Supabase's secure default. Do not enable manual identity linking for this phase.
+
+Supabase automatically links a new Google identity to an existing user when the provider supplies the same verified email. Because `public.profiles.user_id` is the primary key and the profile trigger runs only when a new `auth.users` row is inserted, a linked identity does not create a duplicate profile. A new Google user receives a profile through `on_auth_user_created`; the display name initially falls back to the email prefix and can be changed in Settings.
+
+No additional Netlify variable is required. Google credentials remain in Supabase; the application continues to use only `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`.
+
+## 5. Verify locally
+
+Restart `npm run dev` after changing environment variables. Test signup, email confirmation, email/password login, Google login, forgot-password, recovery, password update, logout, and direct navigation to all protected routes in both languages.
+
+For Google login, verify both a new Google account and an existing confirmed email/password account with the same verified email. The second case should add a Google identity to the existing Supabase user and retain the single existing profile. Confirm on Google's consent screen that no Drive permission appears.
+
+The automated suite validates input rules, redirect safety, Google identity scopes, localized OAuth callback construction, anonymous route behavior, translation parity, and profile-policy structure. A live Supabase test project is still required to verify Google consent, account linking, email delivery, token exchange, and RLS behavior against the deployed database.

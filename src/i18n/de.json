@@ -151,6 +151,7 @@
     "secure": "Sicherer Kontozugang",
     "callbackError": "Der Link ist ungültig oder abgelaufen. Bitte fordere bei Bedarf einen neuen an.",
     "passwordHint": "Mindestens 10 Zeichen mit Groß- und Kleinbuchstaben sowie einer Zahl.",
+    "google": { "continue": "Mit Google fortfahren", "pending": "Weiterleitung zu Google …", "divider": "oder mit E-Mail", "error": "Die Google-Anmeldung konnte nicht gestartet werden. Bitte versuche es erneut." },
     "fields": { "email": "E-Mail-Adresse", "password": "Passwort", "newPassword": "Neues Passwort", "confirmPassword": "Passwort bestätigen", "displayName": "Anzeigename (optional)" },
     "login": { "title": "Willkommen zurück.", "text": "Melde dich sicher an und behalte deine Dokumentenablage im Blick.", "heading": "Bei Docneo anmelden", "submit": "Anmelden", "pending": "Anmeldung läuft …", "forgot": "Passwort vergessen?", "noAccount": "Noch kein Konto?", "signup": "Kostenlos registrieren" },
     "signup": { "title": "Deine Ablage beginnt hier.", "text": "Erstelle dein Konto. Erst nach deiner Bestätigung werden Dokumente gespeichert.", "heading": "Konto erstellen", "submit": "Konto erstellen", "pending": "Konto wird erstellt …", "hasAccount": "Schon registriert?", "login": "Anmelden" },

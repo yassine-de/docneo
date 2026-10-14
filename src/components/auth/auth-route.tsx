@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { AuthForm } from "./auth-form";
 import { AuthShell } from "./auth-shell";
+import { GoogleAuthButton } from "./google-auth-button";
 import { forgotPasswordAction, loginAction, resetPasswordAction, signupAction } from "@/features/auth/actions";
 import { getOptionalUser } from "@/features/auth/session";
 import type { Locale } from "@/i18n/config";
@@ -23,5 +24,6 @@ export async function AuthRoute({ locale, copy, kind, next, callbackError }: { l
     reset: { title: auth.reset.title, text: auth.reset.text, heading: auth.reset.heading, action: resetPasswordAction, fields: [{ name: "password", label: auth.fields.newPassword, type: "password" as const, autoComplete: "new-password", minLength: 10, pattern: "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{10,128}" }, { name: "confirmPassword", label: auth.fields.confirmPassword, type: "password" as const, autoComplete: "new-password", minLength: 10 }], submit: auth.reset.submit, pending: auth.reset.pending, footer: { text: auth.reset.back, href: `/${locale}/login`, label: auth.reset.login } },
   } as const;
   const config = configs[kind];
-  return <AuthShell locale={locale} eyebrow={auth.secure} title={config.title} text={config.text}><div className="auth-card"><div className="auth-card-head"><p className="eyebrow">Docneo Account</p><h2>{config.heading}</h2>{kind === "login" ? <Link href={`/${locale}/forgot-password`}>{auth.login.forgot}</Link> : null}</div>{callbackError ? <p className="form-message error" role="alert">{auth.callbackError}</p> : null}<AuthForm {...config} locale={locale} next={next} passwordHint={kind === "signup" || kind === "reset" ? auth.passwordHint : undefined} /></div></AuthShell>;
+  const showGoogle = kind === "login" || kind === "signup";
+  return <AuthShell locale={locale} eyebrow={auth.secure} title={config.title} text={config.text}><div className="auth-card"><div className="auth-card-head"><p className="eyebrow">Docneo Account</p><h2>{config.heading}</h2>{kind === "login" ? <Link href={`/${locale}/forgot-password`}>{auth.login.forgot}</Link> : null}</div>{callbackError ? <p className="form-message error" role="alert">{auth.callbackError}</p> : null}{showGoogle ? <><GoogleAuthButton locale={locale} label={auth.google.continue} pendingLabel={auth.google.pending} errorMessage={auth.google.error} next={next} /><div className="auth-divider"><span>{auth.google.divider}</span></div></> : null}<AuthForm {...config} locale={locale} next={next} passwordHint={kind === "signup" || kind === "reset" ? auth.passwordHint : undefined} /></div></AuthShell>;
 }
